@@ -29,7 +29,9 @@
         </div>
       </div>
     </div>
+    <div class="pre" id="logList">
 
+    </div>
 
 
 
@@ -37,14 +39,27 @@
     <script src="http://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-
+    <script src="node_modules/yaml-js/yaml.min.js"></script>
     <script type="text/javascript">
-
 
 
       // A $( document ).ready() block.
       $( document ).ready(function() {
+      
+      var icondata;
 
+      $.ajax({
+        async: false,
+        type: "GET",
+        url: "https://raw.github.com/FortAwesome/Font-Awesome/master/src/icons.yml",
+        dataType: "text",
+           contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+        success: function (data) {
+             //parse the file content here
+             icondata = yaml.load(data);
+           }
+        });
+          
          $('#search-field').keyup(function(e) {
             console.log('CHANGE !');
             val = $('#search-field').val();
