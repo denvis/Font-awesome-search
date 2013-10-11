@@ -117,7 +117,7 @@ background-color: #77b0c7;background-image:url('data:image/svg+xml;base64,PHN2Zy
       
       $.each(icondata.icons, function(n, i) {
         //console.log(i);
-        $('#icons').append('<div class="col-lg-3 icon" id="icon-'+i.id+'"><div class="panel panel-default"><div class="panel-body"><i style="width:100%; text-align:center;" class="icon-'+i.id+' icon-3x icon-fixed-width"></i></div><div class="panel-footer">'+i.name+' <br /> <span class="label label-default clippy" data-text="icon-'+i.id+'">icon-'+i.id+'</span> <span class="label label-default">'+i.unicode+'</span></div></div></div>');
+        $('#icons').append('<div class="col-lg-2 icon" id="icon-'+i.id+'"><div class="panel panel-default"><div class="panel-body"><i style="width:100%; text-align:center;" class="icon-'+i.id+' icon-3x icon-fixed-width"></i></div><div class="panel-footer"><input class="form-control input-sm" type="text" value="'+i.id+'"> <span class="label label-default">'+i.unicode+'</span></div></div></div>');
         /* Set up the clippies! */
         
       });
