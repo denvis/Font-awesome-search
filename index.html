@@ -10,6 +10,8 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
 
+
+    <link rel="stylesheet" href="fontAwesome/css/font-awesome.min.css">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="../../assets/js/html5shiv.js"></script>
@@ -29,9 +31,13 @@
         </div>
       </div>
     </div>
-    <div class="pre" id="logList">
+
+    <div class="row" id="icons">
 
     </div>
+
+    </div>
+
 
 
 
@@ -44,14 +50,16 @@
 
 
       // A $( document ).ready() block.
-      $( document ).ready(function() {
+      $(document).ready(function() {
       
       var icondata;
+
 
       $.ajax({
         async: false,
         type: "GET",
-        url: "https://raw.github.com/FortAwesome/Font-Awesome/master/src/icons.yml",
+        //url: "https://raw.github.com/FortAwesome/Font-Awesome/master/src/icons.yml",
+        url: "fontAwesome/src/icons.yml",
         dataType: "text",
            contentType: "application/x-www-form-urlencoded;charset=UTF-8",
         success: function (data) {
@@ -61,17 +69,46 @@
         });
           
          $('#search-field').keyup(function(e) {
-            console.log('CHANGE !');
+            //console.log('CHANGE !');
             val = $('#search-field').val();
             
-            resolve(val);
+            update(val);
           });
-
+      
+      $.each(icondata.icons, function(n, i) {
+        //console.log(i);
+        $('#icons').append('<div class="col-lg-1 icon" id="icon-'+i.id+'"><i class="icon-'+i.id+'"></i></div>');
       });
 
-      function resolve( val ) {
-        console.log(val);
-      };
+      function update(value) {
+
+         var val = $.trim(''+value),
+             vals = $.map(val.split(/\s+/), function(v) {return $.trim(v);});
+         console.log(val);
+         if (val==='') {
+             // Reenable all.
+             $('.icon').show();
+         } else {
+             // Filter! :)
+             $('.icon').each(function(idx, el) {
+                 var normalized_class_name = el.id.replace(/^icon\-/, '').replace(/\W/g, ''),
+                     show = false;
+
+                 $.each(vals, function(i, v) {
+                     if(v !== '' && normalized_class_name.indexOf(v) >= 0) {
+                         show = true;
+                         console.log(normalized_class_name);
+                     }
+                 });
+                 $(el).toggle(show);
+             });         
+         }
+    }
+
+
+      
+      });
+
 
     </script>
 
