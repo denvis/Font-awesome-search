@@ -2,4 +2,6 @@ Font Awesome icon search
 
 Reads iconlist from current Font Awesome release and offers icon search based on their icons.yml.
 
+Using http://fortawesome.github.io/Font-Awesome , http://getbootstrap.com and yaml-js
+
 Inspired by amyseqmedias Font Awesome "Font Awesome Icon Finder" http://fiddle.jshell.net/amyseqmedia/SVVgD/17/show/
