@@ -1,0 +1,5 @@
+Font Awesome icon search
+
+Reads iconlist from current Font Awesome release and offers icon search based on their icons.yml.
+
+Inspired by amyseqmedias Font Awesome "Font Awesome Icon Finder" http://fiddle.jshell.net/amyseqmedia/SVVgD/17/show/
